@@ -10,6 +10,22 @@ import java.sql.Statement;
  *  nombre varchar(45) DEFAULT NULL, password varchar(45) DEFAULT NULL, PRIMARY KEY (id) );
  *  
  */
+
+
+// Instancia insertadas para probar el GET.
+/*
+ * INSERT INTO `usuarios` (nombre, password) VALUES ("Pablosky", "XOXOGryffindor");
+
+ */
+
+/*
+ * INSERT INTO `usuarios` (nombre, password) VALUES ("Mery", "XOXOSlytherin");
+
+ */
+
+/*
+ * INSERT INTO `usuarios`(`nombre`, `password`) VALUES ('FdePablo','elMejorProfe');
+ */
 public class CrearUsuariosMySQL {
 	
 	// Para que sea compatible con Tomcat.

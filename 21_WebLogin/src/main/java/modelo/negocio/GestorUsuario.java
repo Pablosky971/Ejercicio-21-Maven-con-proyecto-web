@@ -1,32 +1,39 @@
 package modelo.negocio;
 
+import java.util.List;
+
 import modelo.entidad.Usuario;
 import modelo.persistencia.DaoUsuarioMySQL;
 import modelo.persistencia.interfaces.DaoUsuario;
 
 public class GestorUsuario {
 	
+	private DaoUsuario du = new DaoUsuarioMySQL();
+	
 	/**
-	 * Método que valida los credenciales introducidos y verifica si se encuentra registrado en la BD o no.
+	 * Mï¿½todo que valida los credenciales introducidos y verifica si se encuentra registrado en la BD o no.
 	 * @param u usuario que se comprueba.
-	 * @return 0 si el usuario indicado no está registrado en el sistema, y 1 si lo está.
+	 * @return 0 si el usuario indicado no estï¿½ registrado en el sistema, y 1 si lo estï¿½.
 	 */
-	public int comprobacionUsuarioLogin(Usuario u) {
+	public int comprobacionUsuarioLogin(String nombre, String password) {
 		
 		int res = 0;
-		DaoUsuario du = new DaoUsuarioMySQL();
-		Usuario usuario = du.obtenerUsuario(u.getNombre(), u.getPassword());
+		
+		Usuario usuario = du.obtenerUsuario(nombre, password);
 		
 		if(usuario != null) {
 			
 			res = 1;
 		
-		} else {
-			
-		}
+		} 
 		
 		
 		return res;
+	}
+	
+	public List<Usuario> listarUsuarios() {
+		List<Usuario> l = du.listarUsuarios();
+		return l;
 	}
 
 }

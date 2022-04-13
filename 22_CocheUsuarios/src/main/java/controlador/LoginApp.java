@@ -8,25 +8,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Prueba
+ * Servlet implementation class LoginApp
  */
-@WebServlet("/Prueba")
-public class Prueba extends HttpServlet {
+@WebServlet("/loginApp")
+public class LoginApp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Prueba() {
+   
+    public LoginApp() {
         super();
-        // TODO Auto-generated constructor stub
+       
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		String nombre = request.getParameter("nombre");
+		String password = request.getParameter("password");
+		
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -34,7 +32,7 @@ public class Prueba extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		doGet(request, response);
 	}
 

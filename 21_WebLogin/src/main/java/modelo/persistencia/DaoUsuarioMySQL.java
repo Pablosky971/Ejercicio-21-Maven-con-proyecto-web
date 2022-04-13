@@ -13,6 +13,16 @@ import modelo.persistencia.interfaces.DaoUsuario;
 
 public class DaoUsuarioMySQL implements DaoUsuario{
 
+	static {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			System.out.println("No se ha encontrado el driver para MySQL");
+		}
+		
+		System.out.println("Se ha cargado el Driver de MySQL");
+	}
 	private Connection conexion;
 	
 	
@@ -84,7 +94,7 @@ public class DaoUsuarioMySQL implements DaoUsuario{
 		}
 		
 		List<Usuario> l = new ArrayList<>();
-		String query = "select ID,NOMBRE,PASSWORD from coches";
+		String query = "select ID,NOMBRE,PASSWORD from usuarios";
 		
 		
 		try {
