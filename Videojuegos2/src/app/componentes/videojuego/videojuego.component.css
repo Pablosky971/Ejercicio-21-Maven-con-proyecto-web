@@ -1,0 +1,23 @@
+img {
+    width: 200px;
+    height: 200px;
+}
+
+span {
+    
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: larger;
+    display: inline;
+    margin-left: 1%;
+    margin-right: 2%;
+    
+
+}
+
+div.videojuego {
+    
+    border: solid 2px;
+    border-color: black;
+    background-color: azure;
+}
+

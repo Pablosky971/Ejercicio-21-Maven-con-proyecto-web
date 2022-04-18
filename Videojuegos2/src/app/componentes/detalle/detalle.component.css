@@ -1,0 +1,39 @@
+span {
+    font-size: larger;
+    display: inline;
+    margin-right: 3%;
+
+}
+
+img {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    width: 500px;
+    height: 500px;
+
+}
+
+div.detalles {
+    position: absolute;
+    border-radius: 10px;
+    background-color: bisque;
+    padding: 3%;
+    width: 40%;
+    top: 25%;
+    left: 3%;
+}
+
+button {
+    position: absolute;
+    margin-top: 1%;
+    color: black;
+    background-color: navajowhite;
+    top: 17%;
+    left: 3.5%;
+    
+}
+
+button:hover {
+    border-radius: 10px;
+}

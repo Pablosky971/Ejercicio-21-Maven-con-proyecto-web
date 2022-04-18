@@ -1,0 +1,8 @@
+
+<div class="videojuegos">
+<h3> Listado de videojuegos </h3>
+<app-videojuego *ngFor="let v of listaVideojuegos" (click)="seleccionar(v)"
+[videojuego]="v">
+  
+</app-videojuego>
+</div>

@@ -11,11 +11,11 @@ import java.util.List;
 import modelo.entidad.Usuario;
 import modelo.persistencia.interfaces.DaoUsuario;
 
-public class DaoUsuarioMySQL implements DaoUsuario{
+public class DaoUsuarioMySQL implements DaoUsuario {
 
 	static {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			System.out.println("No se ha encontrado el driver para MySQL");
@@ -23,21 +23,26 @@ public class DaoUsuarioMySQL implements DaoUsuario{
 		
 		System.out.println("Se ha cargado el Driver de MySQL");
 	}
+	
 	private Connection conexion;
 	
 	
 	
-	public boolean abrirConexion(){
+	public boolean abrirConexion() throws ClassNotFoundException{
+		
 		String url = "jdbc:mysql://localhost:3306/usuario";
 		String usuario = "root";
 		String password = "";
 		try {
+			
 			conexion = DriverManager.getConnection(url,usuario,password);
 		} catch (SQLException e) {
-			
+			System.out.println("No se ha encontrado el driver para MySQL");
 			e.printStackTrace();
 			return false;
 		}
+		
+		System.out.println("Se ha cargado el Driver de MySQL");
 		return true;
 	}
 	
@@ -51,47 +56,60 @@ public class DaoUsuarioMySQL implements DaoUsuario{
 		return true;
 	}
 	
-	public Usuario obtenerUsuario(String nombre, String password) {
+	public Usuario obtenerUsuario(Usuario u) {
 		
+		try {
 		if(!abrirConexion()) {
+			System.out.println("No he abierto bien la conexión");
 			return null;
 		}
+		} catch(ClassNotFoundException e1) {
+			e1.printStackTrace();
+		}
 		
-		Usuario u = null;
-		String query = "select ID,NOMBRE,PASSWORD from usuarios " + "where nombre = ? and password = ?";
+		
+		String query = "select NOMBRE,PASSWORD from usuarios " + "where nombre = ?";
 		
 		
 		try {
 			PreparedStatement ps = conexion.prepareStatement(query);
-			ps.setString(1,nombre);
-			ps.setString(2,password);
+			ps.setString(1,u.getNombre());
 			ResultSet rs = ps.executeQuery();
+			
+			Usuario res = new Usuario();
 			
 			while(rs.next()) {
 				u = new Usuario();
-				u.setId(rs.getInt(1));
-				u.setNombre(rs.getString(2));
-				u.setPassword(rs.getString(3));
+			
+				u.setNombre(rs.getString(1));
+				u.setPassword(rs.getString(2));
 				
 			}
 			
+			return res;
+			
 		} catch(SQLException e) {
-			System.out.println("Error al obtener el usuario" + nombre);
+			System.out.println("Error al obtener el usuario" + u.getNombre());
 			u=null;
 			e.printStackTrace();
 			
 		} finally {
 			cerrarConexion();
 		}
-		return u;
+		return null;
 	}
 
 	
 	public List<Usuario> listarUsuarios() {
 		
-		if(!abrirConexion()) {
-			return null;
-		}
+		try {
+			if(!abrirConexion()) {
+				System.out.println("No he abierto bien la conexión");
+				return null;
+			}
+			} catch(ClassNotFoundException e1) {
+				e1.printStackTrace();
+			}
 		
 		List<Usuario> l = new ArrayList<>();
 		String query = "select ID,NOMBRE,PASSWORD from usuarios";

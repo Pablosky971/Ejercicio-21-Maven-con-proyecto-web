@@ -1,0 +1,10 @@
+button {
+    background-color: palegoldenrod;
+    
+}
+
+button:hover {
+    border: solid 2x;
+    border-color: black;
+}
+

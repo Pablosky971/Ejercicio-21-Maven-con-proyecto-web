@@ -9,19 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import modelo.entidad.Usuario;
 import modelo.negocio.GestorUsuario;
 
 
-@WebServlet("/login")
+@WebServlet("/usuarios/login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private GestorUsuario gu;   
+	private GestorUsuario gu = null;   
     
     public Login() {
-       
+       super();
     }
 
     
@@ -29,28 +32,32 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		
+		response.addHeader("Access-Control-Allow-Origin", "*");
+		
+		
 		String nombre = request.getParameter("nombre");
 		String password = request.getParameter("password");
 		
+		Usuario u = new Usuario();
+		u.setId(-1);
+		u.setNombre(nombre);
+		u.setPassword(password);
 		
-		int r = gu.comprobacionUsuarioLogin(nombre, password);
-			
-	
+		gu = new GestorUsuario();
 		
-		if(r==1) {
-			
-			request.getSession().setAttribute("nombre", nombre);
-			String jsonTrue = "{'validado'}:'true'";
-			response.getWriter().append(jsonTrue);
-			
-			
-		} else {
-			request.getSession().setAttribute("nombre", nombre);
-			String jsonFalse = "{'validado'}:'false'";
-			response.getWriter().append(jsonFalse);
-		}
 		
-		}
+		boolean validacion = gu.comprobacionUsuarioLogin(u);
+		
+		JSONObject json = new JSONObject();
+		json.put("validado", validacion);
+		
+		response.getWriter().write(json.toString());
+			
+	}
 	
 
 	

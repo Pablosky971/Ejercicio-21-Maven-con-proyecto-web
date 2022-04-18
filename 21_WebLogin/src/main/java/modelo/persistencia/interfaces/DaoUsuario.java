@@ -6,7 +6,7 @@ import modelo.entidad.Usuario;
 
 public interface DaoUsuario {
 	
-	Usuario obtenerUsuario(String nombre, String password);
+	Usuario obtenerUsuario(Usuario u);
 	List<Usuario> listarUsuarios();
 	
 	

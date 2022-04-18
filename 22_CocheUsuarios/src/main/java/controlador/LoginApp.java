@@ -21,6 +21,9 @@ public class LoginApp extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		
 		String nombre = request.getParameter("nombre");
 		String password = request.getParameter("password");
 		
@@ -28,9 +31,7 @@ public class LoginApp extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		doGet(request, response);

@@ -1,0 +1,10 @@
+
+<img src="{{this.icono}}" alt="Imagen del videojuego">
+
+<div class="detalles">
+<h1> Detalles del videojuego número {{this.id}}: {{this.titulo}}</h1>
+<span>Compañia: {{this.compania}}</span>
+<span>Valoración media: {{this.valoracion}}</span>
+</div>
+
+<button [routerLink]="[ '/componentMenu/:nombre/:password']"> Volver al listado de videojuegos</button>

@@ -13,24 +13,21 @@ public class GestorUsuario {
 	/**
 	 * M�todo que valida los credenciales introducidos y verifica si se encuentra registrado en la BD o no.
 	 * @param u usuario que se comprueba.
-	 * @return 0 si el usuario indicado no est� registrado en el sistema, y 1 si lo est�.
+	 * @return false si el usuario indicado no est� registrado en el sistema, y true si lo est�.
 	 */
-	public int comprobacionUsuarioLogin(String nombre, String password) {
+	public boolean comprobacionUsuarioLogin(Usuario u) {
 		
-		int res = 0;
+		if(u.getPassword().equals("") || u.getNombre().equals("")) {
+			return false;
+		}
 		
-		Usuario usuario = du.obtenerUsuario(nombre, password);
+		u = du.obtenerUsuario(u);
 		
-		if(usuario != null) {
-			
-			res = 1;
-		
-		} 
-		
-		
-		return res;
+		if(!u.getNombre().equals("") && !u.getPassword().equals("")) {
+			return true;
+		}
+		return false;
 	}
-	
 	public List<Usuario> listarUsuarios() {
 		List<Usuario> l = du.listarUsuarios();
 		return l;

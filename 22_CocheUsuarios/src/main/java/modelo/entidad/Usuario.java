@@ -6,16 +6,9 @@ public class Usuario {
 	private String nombre;
 	private String password;
 	
-	public Usuario(int id, String nombre, String password) {
-		super();
-		this.id=id;
-		this.nombre=nombre;
-		this.password=password;
-	}
 	public Usuario() {
-		this.nombre = "";
 		this.password = "";
-		
+		this.nombre = "";
 	}
 	
 	public int getId() {

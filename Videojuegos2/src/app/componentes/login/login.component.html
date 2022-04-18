@@ -1,0 +1,16 @@
+
+
+
+<div class="login">
+  <h2>Login</h2>
+<form>
+  <label for="nombre">Nombre: </label>
+  <input type="text" name="nombre" [(ngModel)]="nombre" required>
+  <span class="error" [hidden]="falloNombre"> El nombre que ha introducido no se encuentra registrado en el sistema.</span>
+  <label for="password">Contraseña: </label>
+  <input type="password" name="password" [(ngModel)]="password" required>
+  <span class="error" [hidden]="falloPassword"> La contraseña que ha introducido no se encuentra registrada en el sistema.</span>
+  <button (click)="login()" type="button"> Iniciar sesión</button>
+</form>
+</div>
+
