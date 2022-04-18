@@ -11,6 +11,12 @@ import java.util.List;
 import modelo.entidad.Usuario;
 import modelo.persistencia.interfaces.DaoUsuario;
 
+
+/*
+ * CREATE TABLE usuarios ( id int(11) NOT NULL AUTO_INCREMENT,
+ *  nombre varchar(45) DEFAULT NULL, password varchar(45) DEFAULT NULL, PRIMARY KEY (id) );
+ *  
+ */
 public class DaoUsuarioMySQL implements DaoUsuario {
 
 	static {
