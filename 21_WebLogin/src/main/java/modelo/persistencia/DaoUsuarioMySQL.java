@@ -42,7 +42,7 @@ public class DaoUsuarioMySQL implements DaoUsuario {
 			return false;
 		}
 		
-		System.out.println("Se ha cargado el Driver de MySQL");
+		
 		return true;
 	}
 	
@@ -79,10 +79,10 @@ public class DaoUsuarioMySQL implements DaoUsuario {
 			Usuario res = new Usuario();
 			
 			while(rs.next()) {
-				u = new Usuario();
 			
-				u.setNombre(rs.getString(1));
-				u.setPassword(rs.getString(2));
+			
+				res.setNombre(rs.getString(1));
+				res.setPassword(rs.getString(2));
 				
 			}
 			
